@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <ctime>
+#include <sys/time.h>
 
 using namespace std;
 void merge(int *,int, int , int );
@@ -17,10 +19,11 @@ void mergesort(int *a, int low, int high)
 }
 void merge(int *a, int low, int high, int mid)
 {
-    int i, j, k, c[50];
+    int i, j, k, c[10000];// test up to 10000 random number
     i = low;
     k = low;
     j = mid + 1;
+   // cout<<"**"<<&a<<endl;
     while (i <= mid && j <= high)
     {
         if (a[i] < a[j])
@@ -56,21 +59,34 @@ void merge(int *a, int low, int high, int mid)
 int main()
 {   
 
+clock_t startTime =clock();
+    int arr,i;
 
-    int arr;
     cout<<"Enter the size of the array >> ";
     cin>>arr;
-    int a[arr], i;
-    cout<<"enter  the elements\n";
+    int* p=&arr;
+    int a[arr];
+
+for (i =0; i<arr;i++){
+    a[i]= arc4random()%arr+1;// not that this is matter, but i use arc4random to generate pure randomness of number. 
+    cout<<a[i]<<" ";
+}
+
+  /*  
+    cout<<"enter  the elements"<<endl;
     for (i = 0; i < arr; i++)
     {
         cin>>a[i];
     }
+*/
+
     mergesort(a, 0, arr);
-    cout<<"sorted array\n";
+    cout<<endl<<"============== sorted array ============="<<endl;
     for (i = 0; i < arr; i++)
     {
-        cout<<a[i];
+        cout<<a[i]<<" ";
     }
     
+
+    cout<<endl<<"Run Time: "<<double(clock()-startTime)/(double)CLOCKS_PER_SEC<<" Seconds."<<endl;// timer
 }
