@@ -3,23 +3,23 @@
 
 using namespace std;
 void merge(int *,int, int , int );
-void mergesort(int *a, int p, int high)
+void mergesort(int *a, int low, int high)
 {
     int mid;
-    if (p< high)
+    if (low < high)
     {
-        mid=(p+high)/2;
-        mergesort(a,p,mid);
-        mergesort(a,p+1,high);
-        merge(a,p,high,mid);
+        mid=(low+high)/2;
+        mergesort(a,low,mid);
+        mergesort(a,mid+1,high);
+        merge(a,low,high,mid);
     }
-  
+    return;
 }
-void merge(int *a, int p, int high, int mid)
+void merge(int *a, int low, int high, int mid)
 {
-    int i, j, k, c[sizeof(a)/sizeof(*a)];
-    i = p;
-    k = p;
+    int i, j, k, c[50];
+    i = low;
+    k = low;
     j = mid + 1;
     while (i <= mid && j <= high)
     {
@@ -48,38 +48,29 @@ void merge(int *a, int p, int high, int mid)
         k++;
         j++;
     }
-    for (i = p; i < k; i++)
+    for (i = low; i < k; i++)
     {
         a[i] = c[i];
     }
 }
 int main()
-{
-    int x;
-    cout <<"Enter the size of an array >> ";
-    cin >>x;
-    int a[x], i, b[x];
-    cout<<"enter  the elements"<<endl;
-    for (i = 0; i < x; i++)
+{   
+
+
+    int arr;
+    cout<<"Enter the size of the array >> ";
+    cin>>arr;
+    int a[arr], i;
+    cout<<"enter  the elements\n";
+    for (i = 0; i < arr; i++)
     {
         cin>>a[i];
     }
-    mergesort(a, 0, x-1);
+    mergesort(a, 0, arr);
     cout<<"sorted array\n";
-    for (i = 0; i < x; i++)
+    for (i = 0; i < arr; i++)
     {
         cout<<a[i];
     }
-    cout<<"enter  the elements\n";
-    for (i = 0; i < x; i++)
-    {
-        cin>>b[i];
-    }
-    mergesort(b, 0, x-1);
-    cout<<"sorted array\n";
-    for (i = 0; i < x; i++)
-    {
-        cout<<b[i];
-    }
-   
+    
 }
