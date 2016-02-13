@@ -71,7 +71,7 @@ clock_t startTime =clock();
     int a[arr];
 
 for (i =0; i<arr;i++){
-    a[i]= arc4random()%arr;// not that this is matter, but i use arc4random to generate pure randomness of number. 
+    a[i]= arc4random()%arr;// not that this is matter, but i use arc4random to generate pure randomness of numbers. 
     cout<<a[i]<<" ";
 }
 
