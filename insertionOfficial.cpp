@@ -1,3 +1,5 @@
+// Product of Gary Tsai  2/12/2016
+
 #include <iostream>
 #include <ctime>
 #include <sys/time.h>
