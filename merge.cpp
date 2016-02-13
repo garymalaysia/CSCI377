@@ -1,3 +1,4 @@
+// Product of Gary Tsai 2/11/2016
 
 #include <iostream>
 #include <ctime>
